@@ -1,0 +1,7 @@
+D:\Workspace\clu.console\clu.console\bin\Debug\clu.console.exe.config
+D:\Workspace\clu.console\clu.console\bin\Debug\clu.console.exe
+D:\Workspace\clu.console\clu.console\bin\Debug\clu.console.pdb
+D:\Workspace\clu.console\clu.console\obj\Debug\clu.console.csprojResolveAssemblyReference.cache
+D:\Workspace\clu.console\clu.console\obj\Debug\clu.console.csproj.CoreCompileInputs.cache
+D:\Workspace\clu.console\clu.console\obj\Debug\clu.console.exe
+D:\Workspace\clu.console\clu.console\obj\Debug\clu.console.pdb
