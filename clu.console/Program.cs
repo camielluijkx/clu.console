@@ -1,7 +1,13 @@
-﻿using System;
+﻿using clu.logging.log4net;
+
+using log4net;
+
+using System;
+using System.Threading.Tasks;
 
 namespace clu.console
 {
+    // [TODO] arrange log4net config is added by installing nuget package
     class Program
     {
         private static void Initialize()
@@ -19,18 +25,12 @@ namespace clu.console
             Console.BackgroundColor = ConsoleColor.Blue;
 
             Console.WriteLine("\t\t\t\t\t\t\t\t");
-            Console.WriteLine(@"                                $$$$$$$$$$$                     ");
-            Console.WriteLine(@"                 ?????        $$$$$$$$ZZZ$$$                    ");
-            Console.WriteLine(@"              ~?++==++?I    7$$$$$$$$$$Z???Z$                   ");
-            Console.WriteLine(@"             ~?+==~~~=+I$Z 777$$$$$$$  +OOOOO$                  ");
-            Console.WriteLine(@"             ??+=        $77777$$$I     $ZZZZZ                  ");
-            Console.WriteLine(@"             7I?        II777777?       77$$$$                  ");
-            Console.WriteLine(@"              ~77      +IIIII777         777777                 ");
-            Console.WriteLine(@"               II~  =IIIIIIIIIZZ        III777                  ");
-            Console.WriteLine(@"                77IIIIIIIIII   77II?   IIIIII                   ");
-            Console.WriteLine(@"                   7IIIII        $777777777     (TM)            ");
-            Console.WriteLine(@"                                                                ");
-            Console.WriteLine(@"     Microsoft (R) Visual Studio (R) Team Foundation Server     ");
+            Console.WriteLine(@"                 _________ .____     ____ ___                   ");
+            Console.WriteLine(@"                 \_   ___ \|    |   |    |   \                  ");
+            Console.WriteLine(@"                 /    \  \/|    |   |    |   /                  ");
+            Console.WriteLine(@"                 \     \___|    |___|    |  /                   ");
+            Console.WriteLine(@"                  \______  /_______ \______/                    ");
+            Console.WriteLine(@"                         \/        \/                           ");
             Console.WriteLine("\t\t\t\t\t\t\t\t");
             Console.WriteLine("");
             Console.WriteLine("");
@@ -54,6 +54,35 @@ namespace clu.console
             Console.WriteLine($"You entered: {something}");
         }
 
+        private async static Task TestLoggingAsync()
+        {
+            GlobalContext.Properties["correlationId"] = Guid.NewGuid();
+
+            try
+            {
+                await Log4netLogger.LogDebugAsync("some debug message");
+                await Log4netLogger.LogErrorAsync("some error message");
+                await Log4netLogger.LogFatalAsync("some fatal message");
+                await Log4netLogger.LogInformationAsync("some info message");
+                await Log4netLogger.LogWarningAsync("some warning message");
+
+                await Log4netLogger.LogInformationAsync("some stupid password");
+
+                //throw new Exception("some exception occurred");
+
+                await Log4netLogger.LogErrorAsync("kaboom!", new ApplicationException("The application exploded"));
+            }
+            catch (Exception ex)
+            {
+                await Log4netLogger.LogErrorAsync("Error trying to do something", ex);
+            }
+        }
+
+        private static void TestLogging()
+        {
+            TestLoggingAsync().Wait();
+        }
+
         private static void ShowMenu()
         {
             Console.WriteLine("Hello {0}, what would you like to do?", Environment.UserName);
@@ -64,6 +93,7 @@ namespace clu.console
                 Console.WriteLine("");
                 Console.WriteLine("[0] Exit");
                 Console.WriteLine("[1] Do something normal");
+                Console.WriteLine("[2] Test some logging");
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("[!] Do something special <-- You want this option");
                 Console.ForegroundColor = ConsoleColor.White;
@@ -73,6 +103,10 @@ namespace clu.console
                 if (choice == '1')
                 {
                     DoSomethingNormal();
+                }
+                if (choice == '2')
+                {
+                    TestLogging();
                 }
                 else if (choice == '!')
                 {
