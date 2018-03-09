@@ -1,4 +1,5 @@
-﻿using clu.logging.log4net;
+﻿using clu.logging.baconipsum;
+using clu.logging.log4net;
 
 using log4net;
 
@@ -7,8 +8,6 @@ using System.Threading.Tasks;
 
 namespace clu.console
 {
-    // [TODO] arrange log4net config is added by installing nuget package
-    // [TODO] implement random log generator
     class Program
     {
         private static void Initialize()
@@ -18,7 +17,7 @@ namespace clu.console
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("****************************************************************");
-            Console.WriteLine("*******************        TFS Console       *******************");
+            Console.WriteLine("*******************        Demo Console      *******************");
             Console.WriteLine("****************************************************************");
             Console.WriteLine("");
             Console.WriteLine("");
@@ -55,7 +54,7 @@ namespace clu.console
             Console.WriteLine($"You entered: {something}");
         }
 
-        private async static Task TestLoggingAsync()
+        private async static Task TestSomeLoggingAsync()
         {
             GlobalContext.Properties["correlationId"] = Guid.NewGuid();
 
@@ -79,9 +78,57 @@ namespace clu.console
             }
         }
 
-        private static void TestLogging()
+        private static void TestSomeLogging()
         {
-            TestLoggingAsync().Wait();
+            TestSomeLoggingAsync().Wait();
+        }
+
+        private async static Task TestRandomLoggingAsync()
+        {
+            GlobalContext.Properties["correlationId"] = Guid.NewGuid();
+
+            try
+            {
+                var ipsum = await BaconIpsumClient.GetAsync();
+
+                var random = new Random();
+
+                var dice = random.Next(1, 7);
+
+                switch (dice)
+                {
+                    case 1:
+                        await Log4netLogger.LogDebugAsync(ipsum);
+                        break;
+                    case 2:
+                        await Log4netLogger.LogErrorAsync(ipsum);
+                        break;
+                    case 3:
+                        await Log4netLogger.LogFatalAsync(ipsum);
+                        break;
+                    case 4:
+                        await Log4netLogger.LogInformationAsync(ipsum);
+                        break;
+                    case 5:
+                        await Log4netLogger.LogWarningAsync(ipsum);
+                        break;
+                    case 6:
+                        await Log4netLogger.LogErrorAsync("bad luck", new Exception("no meat today"));
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                await Log4netLogger.LogErrorAsync("Error trying to do something", ex);
+            }
+        }
+
+        private static void TestRandomLogging()
+        {
+            for (var i = 0; i < 100; i++)
+            {
+                TestRandomLoggingAsync().Wait();
+            }
         }
 
         private static void ShowMenu()
@@ -94,9 +141,9 @@ namespace clu.console
                 Console.WriteLine("");
                 Console.WriteLine("[0] Exit");
                 Console.WriteLine("[1] Do something normal");
-                Console.WriteLine("[2] Test some logging");
+                Console.WriteLine("[2] Try some random logging");
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("[!] Do something special <-- You want this option");
+                Console.WriteLine("[!] Do something very special <-- You want this option");
                 Console.ForegroundColor = ConsoleColor.White;
                 ConsoleKeyInfo consoleKey = Console.ReadKey(true);
                 choice = consoleKey.KeyChar;
@@ -107,7 +154,8 @@ namespace clu.console
                 }
                 if (choice == '2')
                 {
-                    TestLogging();
+                    //TestSomeLogging();
+                    TestRandomLogging();
                 }
                 else if (choice == '!')
                 {
