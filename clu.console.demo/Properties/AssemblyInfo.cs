@@ -1,15 +1,14 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("clu.console")]
+[assembly: AssemblyTitle("clu.console.demo")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("CLU")]
-[assembly: AssemblyProduct("clu.console")]
+[assembly: AssemblyProduct("clu.console.demo")]
 [assembly: AssemblyCopyright("Copyright © CLU 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

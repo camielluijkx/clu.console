@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{423216E6-3694-4C48-BC25-7F262487F904}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>clu.console</RootNamespace>
-    <AssemblyName>clu.console</AssemblyName>
+    <RootNamespace>clu.console.demo</RootNamespace>
+    <AssemblyName>clu.console.demo</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

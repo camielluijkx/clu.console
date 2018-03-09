@@ -6,3 +6,5 @@
 /.vs/clu.console/v15
 /packages
 /.vs/clu.console/v14/.suo
+/clu.console.demo/bin/Debug
+/clu.console.demo/obj/Debug
