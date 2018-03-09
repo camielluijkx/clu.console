@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace clu.console
 {
     // [TODO] arrange log4net config is added by installing nuget package
+    // [TODO] implement random log generator
     class Program
     {
         private static void Initialize()
