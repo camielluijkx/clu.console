@@ -8,3 +8,9 @@
 /.vs/clu.console/v14/.suo
 /clu.console.demo/bin/Debug
 /clu.console.demo/obj/Debug
+/clu.console.demo.net35/bin/Debug
+/clu.console.demo.net35/obj/Debug
+/clu.console.demo.net461/bin/Debug
+/clu.console.demo.net461/obj/Debug
+/clu.console.library/bin/Debug
+/clu.console.library/obj/Debug

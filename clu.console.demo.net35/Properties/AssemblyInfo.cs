@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("clu.console.demo")]
+[assembly: AssemblyTitle("clu.console.demo.net35")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("CLU")]
-[assembly: AssemblyProduct("clu.console.demo")]
+[assembly: AssemblyProduct("clu.console.demo.net35")]
 [assembly: AssemblyCopyright("Copyright © CLU 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("423216e6-3694-4c48-bc25-7f262487f904")]
+[assembly: Guid("a1a07ed4-f36d-47ee-9501-bef63968a2f6")]
 
 // Version information for an assembly consists of the following four values:
 //

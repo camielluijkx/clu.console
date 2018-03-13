@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{423216E6-3694-4C48-BC25-7F262487F904}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>clu.console.demo</RootNamespace>
-    <AssemblyName>clu.console.demo</AssemblyName>
+    <RootNamespace>clu.console.demo.net461</RootNamespace>
+    <AssemblyName>clu.console.demo.net461</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -71,6 +71,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\clu.console.library\clu.console.library.csproj">
+      <Project>{c5bec5a9-0348-443c-b8a2-69c10e9bf2b6}</Project>
+      <Name>clu.console.library</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
