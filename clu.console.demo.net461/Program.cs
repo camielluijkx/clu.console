@@ -18,21 +18,21 @@ namespace clu.console.demo.net461
 
             try
             {
-                await Log4netLogger.LogDebugAsync("some debug message");
-                await Log4netLogger.LogErrorAsync("some error message");
-                await Log4netLogger.LogFatalAsync("some fatal message");
-                await Log4netLogger.LogInformationAsync("some info message");
-                await Log4netLogger.LogWarningAsync("some warning message");
+                await Log4netLogger.Instance.LogDebugAsync("some debug message");
+                await Log4netLogger.Instance.LogErrorAsync("some error message");
+                await Log4netLogger.Instance.LogFatalAsync("some fatal message");
+                await Log4netLogger.Instance.LogInformationAsync("some info message");
+                await Log4netLogger.Instance.LogWarningAsync("some warning message");
 
-                await Log4netLogger.LogInformationAsync("some stupid password");
+                await Log4netLogger.Instance.LogInformationAsync("some stupid password");
 
                 //throw new Exception("some exception occurred");
 
-                await Log4netLogger.LogErrorAsync("kaboom!", new ApplicationException("The application exploded"));
+                await Log4netLogger.Instance.LogErrorAsync("kaboom!", new ApplicationException("The application exploded"));
             }
             catch (Exception ex)
             {
-                await Log4netLogger.LogErrorAsync("Error trying to do something", ex);
+                await Log4netLogger.Instance.LogErrorAsync("Error trying to do something", ex);
             }
         }
 
@@ -56,28 +56,28 @@ namespace clu.console.demo.net461
                 switch (dice)
                 {
                     case 1:
-                        await Log4netLogger.LogDebugAsync(ipsum);
+                        await Log4netLogger.Instance.LogDebugAsync(ipsum);
                         break;
                     case 2:
-                        await Log4netLogger.LogErrorAsync(ipsum);
+                        await Log4netLogger.Instance.LogErrorAsync(ipsum);
                         break;
                     case 3:
-                        await Log4netLogger.LogFatalAsync(ipsum);
+                        await Log4netLogger.Instance.LogFatalAsync(ipsum);
                         break;
                     case 4:
-                        await Log4netLogger.LogInformationAsync(ipsum);
+                        await Log4netLogger.Instance.LogInformationAsync(ipsum);
                         break;
                     case 5:
-                        await Log4netLogger.LogWarningAsync(ipsum);
+                        await Log4netLogger.Instance.LogWarningAsync(ipsum);
                         break;
                     case 6:
-                        await Log4netLogger.LogErrorAsync("bad luck", new Exception("no meat today"));
+                        await Log4netLogger.Instance.LogErrorAsync("bad luck", new Exception("no meat today"));
                         break;
                 }
             }
             catch (Exception ex)
             {
-                await Log4netLogger.LogErrorAsync("Error trying to do something", ex);
+                await Log4netLogger.Instance.LogErrorAsync("Error trying to do something", ex);
             }
         }
 
@@ -96,7 +96,7 @@ namespace clu.console.demo.net461
                 new List<MenuItem>
                 {
                     new MenuItem(1, "Test some logging", TestSomeLogging),
-                    new MenuItem(2, "Test random logging", TestSomeLogging),
+                    new MenuItem(2, "Test random logging", TestRandomLogging),
                 });
         }
     }
