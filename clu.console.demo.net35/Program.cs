@@ -8,12 +8,12 @@ namespace clu.console.demo.net35
     {
         private static void TestSomeLogging()
         {
-
+            // [TODO] invoke clu.logging.webapi
         }
 
         private static void TestRandomLogging()
         {
-
+            // [TODO] invoke clu.logging.webapi
         }
 
         static void Main(string[] args)
