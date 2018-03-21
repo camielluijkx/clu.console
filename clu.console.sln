@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "clu.console.demo.net35", "clu.console.demo.net35\clu.console.demo.net35.csproj", "{A1A07ED4-F36D-47EE-9501-BEF63968A2F6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "clu.console.demo.net350", "clu.console.demo.net350\clu.console.demo.net350.csproj", "{A1A07ED4-F36D-47EE-9501-BEF63968A2F6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "clu.console.demo.net461", "clu.console.demo.net461\clu.console.demo.net461.csproj", "{423216E6-3694-4C48-BC25-7F262487F904}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "clu.console.library", "clu.console.library\clu.console.library.csproj", "{C5BEC5A9-0348-443C-B8A2-69C10E9BF2B6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "clu.console.library.net350", "clu.console.library.net350\clu.console.library.net350.csproj", "{C5BEC5A9-0348-443C-B8A2-69C10E9BF2B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

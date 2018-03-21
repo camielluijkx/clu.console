@@ -1,6 +1,6 @@
-﻿using clu.console.library;
-using clu.logging.baconipsum;
-using clu.logging.log4net;
+﻿using clu.console.library.net350;
+using clu.logging.baconipsum.net461;
+using clu.logging.log4net.net461;
 
 using log4net;
 

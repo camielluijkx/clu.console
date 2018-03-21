@@ -1,4 +1,4 @@
-﻿using clu.console.library;
+﻿using clu.console.library.net350;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 
-namespace clu.console.demo.net35
+namespace clu.console.demo.net350
 {
     class Program
     {

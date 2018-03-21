@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace clu.console.library
+namespace clu.console.library.net350
 {
     public delegate void MenuItemEvent();
 

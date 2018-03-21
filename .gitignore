@@ -2,15 +2,13 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/clu.console
-/.vs/clu.console/v15
 /packages
-/.vs/clu.console/v14/.suo
-/clu.console.demo/bin/Debug
-/clu.console.demo/obj/Debug
-/clu.console.demo.net35/bin/Debug
-/clu.console.demo.net35/obj/Debug
-/clu.console.demo.net461/bin/Debug
-/clu.console.demo.net461/obj/Debug
-/clu.console.library/bin/Debug
-/clu.console.library/obj/Debug
+/.vs/config
+/.vs/clu.console/v14
+/.vs/clu.console/v15
+/clu.console.demo.net350/bin
+/clu.console.demo.net350/obj
+/clu.console.demo.net461/bin
+/clu.console.demo.net461/obj
+/clu.console.library.net350/bin
+/clu.console.library.net350/obj
