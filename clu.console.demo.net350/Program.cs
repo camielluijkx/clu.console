@@ -1,77 +1,42 @@
 ﻿using clu.console.library.net350;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+using clu.logging.baconipsum.net350;
+using clu.logging.log4net.net350;
 
 using System;
 using System.Collections.Generic;
-using System.Net;
 
 namespace clu.console.demo.net350
 {
     class Program
     {
-        private class PostData
-        {
-            public string Message { get; set; }
-        }
-
-        private static object Get(Uri webApiUrl)
-        {
-            var client = new WebClient { Headers = { [HttpRequestHeader.ContentType] = "application/json" } };
-
-            var response = client.DownloadString(webApiUrl);
-
-            return JsonConvert.DeserializeObject(response);
-        }
-
-        private static object Post(object data, Uri webApiUrl)
-        {
-            var client = new WebClient {Headers = {[HttpRequestHeader.ContentType] = "application/json"}};
-
-            var serializerSettings = new JsonSerializerSettings
-            {
-                ContractResolver = new CamelCasePropertyNamesContractResolver()
-            };
-
-            var serialisedData = JsonConvert.SerializeObject(data, serializerSettings);
-
-            var response = client.UploadString(webApiUrl, serialisedData);
-
-            return JsonConvert.DeserializeObject(response);
-        }
-
         private static void TestSomeLogging()
         {
-            //GlobalContext.Properties["correlationId"] = Guid.NewGuid(); // [TODO] 1)
+            // [TODO] set correlation id when using logging api
 
             try
             {
-                Post(new PostData { Message = "some debug message" }, new Uri("http://localhost/clu.logging.webapi/Logging/Debug"));
-                Post(new PostData { Message = "some error message" }, new Uri("http://localhost/clu.logging.webapi/Logging/Error"));
-                Post(new PostData { Message = "some fatal message" }, new Uri("http://localhost/clu.logging.webapi/Logging/Fatal"));
-                Post(new PostData { Message = "some info message" }, new Uri("http://localhost/clu.logging.webapi/Logging/Info"));
-                Post(new PostData { Message = "some warn message" }, new Uri("http://localhost/clu.logging.webapi/Logging/Warn"));
-
-                Post(new PostData { Message = "some secret password" }, new Uri("http://localhost/clu.logging.webapi/Logging/Info"));
+                Logger.Instance.LogDebug("some debug message");
+                Logger.Instance.LogError("some error message");
+                Logger.Instance.LogFatal("some fatal message");
+                Logger.Instance.LogInformation("some info message");
+                Logger.Instance.LogWarning("some warn message");
+                Logger.Instance.LogInformation("some secret password");
 
                 //throw new Exception("some exception occurred");
 
-                //await Log4netLogger.Instance.LogErrorAsync("kaboom!", new ApplicationException("The application exploded!!")); // [TODO] 1)
+                Logger.Instance.LogError("kaboom!", new ApplicationException("The application exploded!!"));
             }
             catch (Exception ex)
             {
-                //await Log4netLogger.Instance.LogErrorAsync("Error trying to do something:", ex); // [TODO] 1)
+                Logger.Instance.LogError("Error trying to do something:", ex);
             }
         }
 
-        private static void TestRandomLogging()
+        private static void TestRandomLogging(int i)
         {
-            //GlobalContext.Properties["correlationId"] = Guid.NewGuid(); // [TODO] 1)
-
             try
             {
-                var ipsum = Get(new Uri("https://baconipsum.com/api/?type=all-meat&paras=1&start-with-lorem=0&format=text")); // [TODO] 1)
+                var ipsum = BaconIpsumClient.Get();
 
                 var random = new Random();
 
@@ -81,42 +46,51 @@ namespace clu.console.demo.net350
                 {
                     case 1:
                     {
-                        Post(new PostData { Message = ipsum.ToString() }, new Uri("http://localhost/clu.logging.webapi/Logging/Debug")); // [TODO] 1)
+                        Logger.Instance.LogDebug(ipsum);
                         break;
                     }
                     case 2:
                     {
-                        Post(new PostData { Message = ipsum.ToString() }, new Uri("http://localhost/clu.logging.webapi/Logging/Error")); // [TODO] 1)
+                        Logger.Instance.LogError(ipsum);
                         break;
                     }
                     case 3:
                     {
-                        Post(new PostData { Message = ipsum.ToString() }, new Uri("http://localhost/clu.logging.webapi/Logging/Fatal")); // [TODO] 1)
+                        Logger.Instance.LogFatal(ipsum);
                         break;
                     }
                     case 4:
                     {
-                        Post(new PostData { Message = ipsum.ToString() }, new Uri("http://localhost/clu.logging.webapi/Logging/Info")); // [TODO] 1)
+                        Logger.Instance.LogInformation(ipsum);
                         break;
                     }
                     case 5:
                     {
-                        Post(new PostData { Message = ipsum.ToString() }, new Uri("http://localhost/clu.logging.webapi/Logging/Warn")); // [TODO] 1)
+                        Logger.Instance.LogWarning(ipsum);
                         break;
                     }
-                    //case 6:
-                    //{
-                    //    await Log4netLogger.Instance.LogErrorAsync("bad luck", new Exception("no meat today")); // [TODO] 1)
-                    //    break;
-                    //}
+                    case 6:
+                    {
+                        Logger.Instance.LogError("bad luck", new Exception("no meat today"));
+                        break;
+                    }
                 }
             }
             catch (Exception ex)
             {
-                //await Log4netLogger.Instance.LogErrorAsync("Error trying to do something", ex); // [TODO] 1)
+                Logger.Instance.LogError("Error trying to do something", ex);
             }
         }
 
+        private static void TestRandomLogging()
+        {
+            // [TODO] set correlation id when using logging api
+
+            for (var i = 0; i < 100; i++)
+            {
+                TestRandomLogging(i);
+            }
+        }
 
         static void Main(string[] args)
         {

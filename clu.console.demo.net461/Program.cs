@@ -93,11 +93,16 @@ namespace clu.console.demo.net461
             }
         }
 
+        private static void TestRandomLogging(int i)
+        {
+            TestRandomLoggingAsync().Wait();
+        }
+
         private static void TestRandomLogging()
         {
             for (var i = 0; i < 100; i++)
             {
-                TestRandomLoggingAsync().Wait();
+                TestRandomLogging(i);
             }
         }
 
